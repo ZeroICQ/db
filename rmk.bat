@@ -1,1 +1,0 @@
-"C:\Program Files\Firebird\Firebird_2_5\bin\isql.exe"
