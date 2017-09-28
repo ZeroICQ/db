@@ -1,0 +1,27 @@
+SELECT g.name, count(*) FROM students s INNER JOIN groups g on s.group_id = g.id GROUP BY g.name, g.id
+HAVING count(*) > 10;
+
+select s.name, avg(m.mark) from SUBJECTS s
+inner join marks m on m.SUBJECTT_ID = s.ID group by name, id;
+
+select s.name, avg(cast(m.mark AS FLOAT)) from SUBJECTS s
+inner join marks m on m.SUBJECT_ID = s.ID group by name, id;
+
+select s.name, avg(cast(m.mark AS DOUBLE precision)) from SUBJECTS s
+inner join marks m on m.SUBJECT_ID = s.ID group by name, id;
+
+ЗАДАНИЯ
+1
+
+
+select sj1.*, st.name from
+(
+select sj.id, (select m.student_id
+from marks m where m.subject_id= sj.id
+order by mark desc 
+rows 1) as st_id from subjects sj
+) sj1
+INNER JOIN subjects sj on sj.id = sj1.id
+INNER JOIN students st on st_id = st.ID
+INNER JOIN marks m on m.student_id = st_id and m.subject_id = sj.id
+;
