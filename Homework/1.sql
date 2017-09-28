@@ -30,3 +30,19 @@ inner join MARKS m on m.SUBJECT_ID = sb.id
 group by sb.name, sb.id
 order by mm;
 ----------------------------------------------------------------
+
+----Доска-------------
+select
+(select st1.name
+    from students st1
+    where st1.ID = (
+            select m1.STUDENT_ID
+            from marks m1
+            where m1.SUBJECT_ID=sub.id AND m1.mark = max(m.mark) rows 1
+        )
+    rows 1
+),
+sub.name, max(m.mark)
+from subjects sub
+inner join marks m on m.SUBJECT_ID = sub.id
+group by sub.name, sub.id;
