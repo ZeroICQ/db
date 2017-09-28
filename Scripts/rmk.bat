@@ -1,8 +1,9 @@
 SET isql=C:\"Program Files"\Firebird\Firebird_2_5\bin\isql.exe -u SYSDBA -p masterkey
+SET sqlfolder=%~dp0\..\Sql\
 
-del ..\students.fdb
+del %~dp0\..\students.fdb
 
-%isql% -i ..\Sql\students.sql
-%isql% -i ..\Sql\groups.sql
-%isql% -i ..\Sql\subjects.sql
-%isql% -i ..\Sql\marks.sql
+%isql% -i %sqlfolder%\students.sql
+%isql% -i %sqlfolder%\groups.sql
+%isql% -i %sqlfolder%\subjects.sql
+%isql% -i %sqlfolder%\marks.sql
