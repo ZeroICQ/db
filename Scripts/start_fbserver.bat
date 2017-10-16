@@ -1,1 +1,1 @@
-start C:\"Program Files"\Firebird\Firebird_2_5\bin\fbserver.exe -a
+start C:\"Program Files"\Firebird\Firebird_3_0\firebird.exe -a
