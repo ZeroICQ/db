@@ -1,6 +1,8 @@
 import random
 
 
+
+
 def rmk_table(cur):
     try:
         cur.execute('DROP TABLE SUBGROUPS')
