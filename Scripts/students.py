@@ -23,7 +23,8 @@ def rmk_table(cur):
                         'ID INTEGER,'
                         'NAME VARCHAR(255),'
                         'BIRTHDAY DATE,'
-                        'GROUP_ID INTEGER'
+                        'GROUP_ID INTEGER,'
+                        'SUBGROUP_ID INTEGER'
                     ');')
 
 
@@ -35,7 +36,7 @@ def run(con, cur):
         for surname in surnames:
             for fatherName in fatherNames:
                 fio = '%s %s %s' % (surname, name, fatherName)
-                sql = 'INSERT INTO STUDENTS VALUES (%d, \'%s\', \'%s\', %d);' % (s_id, fio, gen_date(), random.randint(1, 5))
+                sql = 'INSERT INTO STUDENTS VALUES (%d, \'%s\', \'%s\', %d, %d);' % (s_id, fio, gen_date(), random.randint(1, 5), random.randint(1, 10))
                 cur.execute(sql)
                 s_id += 1
 

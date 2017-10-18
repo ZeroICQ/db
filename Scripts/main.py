@@ -3,6 +3,7 @@ import students
 import groups
 import subjects
 import marks
+import subgroups
 
 DB_PATH='localhost:C:/Users/Alexey/Desktop/database/STUDENTS.FDB'
 
@@ -11,13 +12,14 @@ con = fdb.connect(
     user='SYSDBA',
     password='masterkey'
 )
+try:
+    cur = con.cursor()
 
-cur = con.cursor()
-
-students.run(con, cur)
-groups.run(con, cur)
-subjects.run(con, cur)
-marks.run(con, cur)
-
-con.commit()
-con.close()
+    students.run(con, cur)
+    groups.run(con, cur)
+    subjects.run(con, cur)
+    marks.run(con, cur)
+    subgroups.run(con, cur)
+finally:
+    con.commit()
+    con.close()
