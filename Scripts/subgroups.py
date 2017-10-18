@@ -43,10 +43,10 @@ def run(con, cur):
     insert(4, None, 'sub5')
 
     insert(None, 7, 'sub6')
-    insert(7, 8, 'sub7')
-    insert(8, None, 'sub8')
+    insert(6, 8, 'sub7')
+    insert(7, None, 'sub8')
 
-    insert(None, 9, 'sub9')
+    insert(None, 10, 'sub9')
     insert(9, None, 'sub10')
 
 
