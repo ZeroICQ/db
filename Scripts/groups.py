@@ -7,12 +7,6 @@ def gen_date():
     year = random.randint(1900, 2000)
     return '%d-%d-%d' % (year, month, day)
 
-
-names = ['Nikita', 'Alexander', 'Dima', 'Nastya', 'Dasha']
-surnames = ['Ivanov', 'Smirnov', 'Vasilev', 'Petrov', 'Kyznetsov']
-fatherNames = ['Ivanovich', 'Alexeevich', 'Vasilich', 'Olegovich']
-
-
 def rmk_table(cur):
     try:
         cur.execute('DROP TABLE GROUPS')
@@ -33,7 +27,10 @@ def run(con, cur):
                    'engineer',
                    'international relationships',
                    'economics and management',
-                   'eastern culture']
+                   'eastern culture',
+                   'good',
+                   'bad',
+                   'average']
 
     for idx, name in enumerate(group_names):
         sql = 'INSERT INTO GROUPS VALUES (%d, \'%s\')' % (idx+1, name)

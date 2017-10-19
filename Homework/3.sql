@@ -15,11 +15,11 @@ where
 
 ---готово--
 select
-    list(birtmonth),
+    list(distinct birtmonth, '; '),
     passed
 from
     (select
-        list(distinct extract(month from s.BIRTHDAY)) as birtmonth,
+        extract(month from s.BIRTHDAY) as birtmonth,
         count(*) as passed
     from STUDENTS s
     inner join GROUPS g 
@@ -31,7 +31,7 @@ from
     where
         m.id is NUll
     group by
-        s.NAME, s.ID
+        s.NAME, s.ID, birtmonth
     )
 group by 
     passed

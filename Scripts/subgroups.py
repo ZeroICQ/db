@@ -12,8 +12,7 @@ def rmk_table(cur):
         cur.execute('CREATE TABLE SUBGROUPS('
                         'ID INTEGER,'
                         'PARENT_ID INTEGER,'
-                        'CHILD_ID INTEGER,'
-                        'NAME VARCHAR(255)'
+                        'CHILD_ID INTEGER'
                     ');')
 
 
@@ -21,12 +20,12 @@ s_id = 1
 g_cur = None
 
 
-def insert(parent, child, name):
+def insert(parent, child):
     global s_id
 
-    sql = 'INSERT INTO SUBGROUPS (id, parent_id, child_id, name) values (?,?,?,?)'
+    sql = 'INSERT INTO SUBGROUPS (id, parent_id, child_id) values (?,?,?)'
 
-    g_cur.execute(sql, (s_id, parent, child, name))
+    g_cur.execute(sql, (s_id, parent, child))
     s_id += 1
 
 
@@ -38,19 +37,13 @@ def run(con, cur):
 
     g_cur = cur
 
-    insert(None, 2, 'sub1')
-    insert(1, 3, 'sub2')
-    insert(2, 4, 'sub3')
-    insert(3, 5, 'sub4')
-    insert(4, None, 'sub5')
-
-    insert(None, 7, 'sub6')
-    insert(6, 8, 'sub7')
-    insert(7, None, 'sub8')
-
-    insert(None, 10, 'sub9')
-    insert(9, None, 'sub10')
-
+    insert(1, 2)
+    insert(1, 3)
+    insert(3, 8)
+    insert(2, 4)
+    insert(2, 5)
+    insert(4, 6)
+    insert(4, 7)
 
 
 

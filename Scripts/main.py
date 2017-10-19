@@ -5,7 +5,7 @@ import subjects
 import marks
 import subgroups
 
-DB_PATH='localhost:C:/Users/Alexey/Desktop/database/STUDENTS.FDB'
+DB_PATH='localhost:C:/Users/Alexey/Desktop/db/STUDENTS.FDB'
 
 con = fdb.connect(
     dsn=DB_PATH,
