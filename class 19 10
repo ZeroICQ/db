@@ -1,0 +1,29 @@
+recreate view sm as 
+select 
+    s.id,
+    s.name,
+    s.GROUP_ID,
+    avg(m.mark) as am
+from
+    STUDENTS s
+inner join marks m on m.STUDENT_ID = s.id
+group by 1, 2, 3
+
+select sm.*, sm.AM, avg(am) over(partition by group_id)
+from sm
+
+
+select 
+    sm.*, 
+    sm.AM, 
+    dense_rank() over(partition by group_id order by am),
+    rank() over(partition by group_id order by am)
+from sm
+
+select 
+    sm.*, 
+    sm.AM, 
+    dense_rank() over(partition by group_id order by am),
+    rank() over(partition by group_id order by am),
+    last_value(am) over(partition by group_id order by am)
+from sm
